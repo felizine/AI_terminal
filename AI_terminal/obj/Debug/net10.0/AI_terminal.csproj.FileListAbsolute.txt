@@ -90,3 +90,4 @@
 /media/work/project/NET_app/AI_terminal/AI_terminal/obj/Debug/net10.0/AI_terminal.pdb
 /media/work/project/NET_app/AI_terminal/AI_terminal/obj/Debug/net10.0/AI_terminal.genruntimeconfig.cache
 /media/work/project/NET_app/AI_terminal/AI_terminal/obj/Debug/net10.0/ref/AI_terminal.dll
+/media/work/project/NET_app/AI_terminal/AI_terminal/obj/Debug/net10.0/AI_terminal.sourcelink.json

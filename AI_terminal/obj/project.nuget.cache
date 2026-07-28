@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fTZx/rzG9A4=",
+  "dgSpecHash": "7z9upOaCJnA=",
   "success": true,
   "projectFilePath": "/media/work/project/NET_app/AI_terminal/AI_terminal/AI_terminal.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,6 @@
     "/home/felix/.nuget/packages/skiasharp.nativeassets.macos/3.119.4/skiasharp.nativeassets.macos.3.119.4.nupkg.sha512",
     "/home/felix/.nuget/packages/skiasharp.nativeassets.webassembly/3.119.4/skiasharp.nativeassets.webassembly.3.119.4.nupkg.sha512",
     "/home/felix/.nuget/packages/skiasharp.nativeassets.win32/3.119.4/skiasharp.nativeassets.win32.3.119.4.nupkg.sha512",
-    "/home/felix/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512",
     "/home/felix/.nuget/packages/tmds.dbus.protocol/0.92.0/tmds.dbus.protocol.0.92.0.nupkg.sha512"
   ],
   "logs": []
