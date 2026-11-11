@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ws="using:AITerminal.UI.ViewModels.Workspaces"
+             x:Class="AITerminal.UI.Views.Workspaces.ScheduleWorkspaceView"
+             x:DataType="ws:ScheduleWorkspaceViewModel">
+    <StackPanel Spacing="16">
+        <Border Classes="card warning" Padding="14">
+            <StackPanel Spacing="4">
+                <TextBlock Text="Conflict needs a decision"
+                           FontSize="13"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="Project planning overlaps Weekly review from 14:00 to 14:30."
+                           Classes="secondary"
+                           FontSize="12"
+                           LineHeight="18" />
+                <TextBlock Text="Alternatives and approvals will appear here in Phase 2."
+                           Foreground="{DynamicResource WarningBrush}"
+                           FontSize="11"
+                           Margin="0,2,0,0" />
+            </StackPanel>
+        </Border>
+
+        <ItemsControl ItemsSource="{Binding Items}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="ws:ScheduleItemViewModel">
+                    <Grid ColumnDefinitions="82,24,*" Margin="0,0,0,9">
+                        <TextBlock Text="{Binding TimeLabel}"
+                                   Classes="caption"
+                                   FontSize="11"
+                                   FontWeight="SemiBold"
+                                   TextAlignment="Right"
+                                   Margin="0,15,10,0"
+                                   VerticalAlignment="Top" />
+
+                        <Grid Grid.Column="1">
+                            <Border Width="1"
+                                    Background="{DynamicResource BorderBrush}"
+                                    HorizontalAlignment="Center" />
+                            <Ellipse Width="9"
+                                     Height="9"
+                                     Fill="{DynamicResource AccentBrush}"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Center"
+                                     Margin="0,17,0,0" />
+                        </Grid>
+
+                        <Border Grid.Column="2"
+                                Classes="card"
+                                Classes.warning="{Binding IsConflict}"
+                                Padding="13">
+                            <StackPanel Spacing="3">
+                                <TextBlock Text="{Binding Title}"
+                                           FontSize="13"
+                                           FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding Detail}"
+                                           Classes="caption"
+                                           LineHeight="17" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Border Background="{DynamicResource AccentSoftBrush}"
+                BorderBrush="#285D51"
+                BorderThickness="1"
+                CornerRadius="11"
+                Padding="13">
+            <TextBlock Text="The timeline is explanatory in Phase 1. Calendar connections, conflict detection, and proposal animations arrive in the next vertical slice."
+                       Classes="secondary"
+                       FontSize="11"
+                       LineHeight="17" />
+        </Border>
+    </StackPanel>
+</UserControl>

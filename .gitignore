@@ -1,6 +1,26 @@
+# Build output
 bin/
 obj/
+artifacts/
+TestResults/
+*.nupkg
+
+# IDE and user-local files
 .idea/
-*.user
-*.suo
 .vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Local application data
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log

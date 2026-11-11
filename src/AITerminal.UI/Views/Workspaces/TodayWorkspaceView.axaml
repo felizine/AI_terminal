@@ -1,0 +1,171 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ws="using:AITerminal.UI.ViewModels.Workspaces"
+             x:Class="AITerminal.UI.Views.Workspaces.TodayWorkspaceView"
+             x:DataType="ws:TodayWorkspaceViewModel">
+    <StackPanel Spacing="18">
+
+        <ItemsControl ItemsSource="{Binding Stats}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="ws:SummaryStatViewModel">
+                    <Border Classes="card"
+                            Classes.warning="{Binding IsWarning}"
+                            Width="178"
+                            Padding="15"
+                            Margin="0,0,10,10">
+                        <StackPanel Spacing="4">
+                            <TextBlock Text="{Binding Value}" Classes="metric" />
+                            <TextBlock Text="{Binding Label}"
+                                       FontSize="13"
+                                       FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding Detail}"
+                                       Classes="caption"
+                                       LineHeight="16" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Border Classes="card warning" Padding="15">
+            <Grid ColumnDefinitions="Auto,*">
+                <Border Width="32"
+                        Height="32"
+                        CornerRadius="9"
+                        Background="#4A341B">
+                    <TextBlock Text="!"
+                               Foreground="{DynamicResource WarningBrush}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Border>
+                <StackPanel Grid.Column="1" Margin="12,0,0,0" Spacing="3">
+                    <TextBlock Text="{Binding ConflictTitle}"
+                               FontSize="13"
+                               FontWeight="SemiBold" />
+                    <TextBlock Text="{Binding ConflictDescription}"
+                               Classes="secondary"
+                               FontSize="12"
+                               LineHeight="18" />
+                    <TextBlock Text="Nothing will change without your approval."
+                               Foreground="{DynamicResource WarningBrush}"
+                               FontSize="11"
+                               Margin="0,3,0,0" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+            <StackPanel Grid.Column="0" Spacing="10">
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBlock Text="Next up" Classes="h3" />
+                    <Button Grid.Column="1"
+                            Classes="ghost"
+                            Content="Full schedule"
+                            Command="{Binding OpenScheduleCommand}"
+                            MinHeight="30"
+                            Padding="10,4"
+                            FontSize="11" />
+                </Grid>
+                <ItemsControl ItemsSource="{Binding Agenda}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="ws:AgendaItemViewModel">
+                            <Border Background="{DynamicResource SurfaceRaisedBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="11"
+                                    Padding="12"
+                                    Margin="0,0,0,8">
+                                <Grid ColumnDefinitions="78,*">
+                                    <TextBlock Text="{Binding TimeLabel}"
+                                               FontSize="11"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource AccentBrush}" />
+                                    <StackPanel Grid.Column="1" Spacing="2">
+                                        <TextBlock Text="{Binding Title}"
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding Meta}"
+                                                   Classes="caption"
+                                                   FontSize="10" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Spacing="10">
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBlock Text="Priorities" Classes="h3" />
+                    <Button Grid.Column="1"
+                            Classes="ghost"
+                            Content="All tasks"
+                            Command="{Binding OpenTasksCommand}"
+                            MinHeight="30"
+                            Padding="10,4"
+                            FontSize="11" />
+                </Grid>
+                <ItemsControl ItemsSource="{Binding Tasks}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="ws:TaskItemViewModel">
+                            <Border Background="{DynamicResource SurfaceRaisedBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="11"
+                                    Padding="12"
+                                    Margin="0,0,0,8">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <TextBlock Text="{Binding StatusGlyph}"
+                                               Foreground="{DynamicResource AccentBrush}"
+                                               FontSize="15"
+                                               Margin="0,0,9,0" />
+                                    <StackPanel Grid.Column="1" Spacing="2">
+                                        <TextBlock Text="{Binding Title}"
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding Project}"
+                                                   Classes="caption"
+                                                   FontSize="10" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="2"
+                                               Text="{Binding Priority}"
+                                               FontSize="10"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource WarningBrush}"
+                                               VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+
+        <Border Background="{DynamicResource AccentSoftBrush}"
+                BorderBrush="#285D51"
+                BorderThickness="1"
+                CornerRadius="12"
+                Padding="15">
+            <Grid ColumnDefinitions="Auto,*">
+                <TextBlock Text="◷"
+                           Foreground="{DynamicResource AccentBrush}"
+                           FontSize="18"
+                           Margin="0,0,12,0" />
+                <StackPanel Grid.Column="1" Spacing="3">
+                    <TextBlock Text="Protected focus time" FontSize="13" FontWeight="SemiBold" />
+                    <TextBlock Text="{Binding FocusSummary}"
+                               Classes="secondary"
+                               FontSize="12" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ws="using:AITerminal.UI.ViewModels.Workspaces"
+             x:Class="AITerminal.UI.Views.Workspaces.TasksWorkspaceView"
+             x:DataType="ws:TasksWorkspaceViewModel">
+    <StackPanel Spacing="16">
+        <Border Background="{DynamicResource SurfaceRaisedBrush}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="12"
+                Padding="14">
+            <Grid ColumnDefinitions="*,Auto,Auto">
+                <TextBlock Text="Open items"
+                           Classes="secondary"
+                           FontSize="12"
+                           VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Spacing="6"
+                            Margin="0,0,16,0">
+                    <TextBlock Text="{Binding OpenCount}" Classes="h3" />
+                    <TextBlock Text="open"
+                               Classes="caption"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6">
+                    <TextBlock Text="{Binding HighPriorityCount}"
+                               Classes="h3"
+                               Foreground="{DynamicResource WarningBrush}" />
+                    <TextBlock Text="high priority"
+                               Classes="caption"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ItemsControl ItemsSource="{Binding Tasks}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="ws:TaskItemViewModel">
+                    <Border Classes="card"
+                            Padding="14"
+                            Margin="0,0,0,9">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <TextBlock Text="{Binding StatusGlyph}"
+                                       Foreground="{DynamicResource AccentBrush}"
+                                       FontSize="18"
+                                       Margin="0,1,12,0" />
+                            <StackPanel Grid.Column="1" Spacing="4">
+                                <TextBlock Text="{Binding Title}"
+                                           FontSize="14"
+                                           FontWeight="SemiBold" />
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock Text="{Binding Project}"
+                                               Classes="caption" />
+                                    <TextBlock Text="·" Classes="caption" />
+                                    <TextBlock Text="{Binding Due}"
+                                               Classes="caption" />
+                                </StackPanel>
+                            </StackPanel>
+                            <Border Grid.Column="2"
+                                    Classes="pill"
+                                    Classes.warning="{Binding IsHighPriority}"
+                                    VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Priority}"
+                                           Classes="pillText"
+                                           Classes.warning="{Binding IsHighPriority}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Border BorderBrush="{DynamicResource BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="11"
+                Padding="13">
+            <TextBlock Text="Task editing and external task sync are intentionally disabled in Phase 1. Every future write will show a preview and require approval."
+                       Classes="caption"
+                       LineHeight="18" />
+        </Border>
+    </StackPanel>
+</UserControl>

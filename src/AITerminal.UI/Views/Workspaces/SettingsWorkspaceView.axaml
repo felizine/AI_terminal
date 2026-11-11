@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ws="using:AITerminal.UI.ViewModels.Workspaces"
+             x:Class="AITerminal.UI.Views.Workspaces.SettingsWorkspaceView"
+             x:DataType="ws:SettingsWorkspaceViewModel">
+    <StackPanel Spacing="12">
+        <Border Classes="card" Padding="15">
+            <StackPanel Spacing="7">
+                <TextBlock Text="LOCAL DATA" Classes="eyebrow" FontSize="9" />
+                <TextBlock Text="Conversation database"
+                           FontSize="13"
+                           FontWeight="SemiBold" />
+                <SelectableTextBlock Text="{Binding DataDirectory}"
+                                     Classes="secondary"
+                                     FontSize="11"
+                                     TextWrapping="Wrap" />
+                <TextBlock Text="Chat history is stored locally in SQLite. Deleting this directory resets local conversations."
+                           Classes="caption"
+                           LineHeight="17" />
+            </StackPanel>
+        </Border>
+
+        <Border Classes="card" Padding="15">
+            <StackPanel Spacing="7">
+                <TextBlock Text="SECURE CREDENTIALS" Classes="eyebrow" FontSize="9" />
+                <TextBlock Text="Credential backend"
+                           FontSize="13"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="{Binding CredentialBackend}"
+                           Classes="secondary"
+                           FontSize="12" />
+                <TextBlock Text="Provider and OAuth secrets will be stored here, never in the local database or model context."
+                           Classes="caption"
+                           LineHeight="17" />
+            </StackPanel>
+        </Border>
+
+        <Border Classes="card" Padding="15">
+            <StackPanel Spacing="7">
+                <TextBlock Text="INFERENCE" Classes="eyebrow" FontSize="9" />
+                <TextBlock Text="Current response source"
+                           FontSize="13"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="{Binding InferenceStatus}"
+                           Foreground="{DynamicResource WarningBrush}"
+                           FontSize="12"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="{Binding MotionStatus}"
+                           Classes="caption" />
+                <TextBlock Text="Phase 2 adds OpenAI-compatible and Ollama provider settings, streaming tool calls, and model capability checks."
+                           Classes="caption"
+                           LineHeight="17" />
+            </StackPanel>
+        </Border>
+
+        <Border Background="{DynamicResource AccentSoftBrush}"
+                BorderBrush="#285D51"
+                BorderThickness="1"
+                CornerRadius="11"
+                Padding="13">
+            <TextBlock Text="Phase 1 establishes a safe local foundation. External writes, Google access, and model requests are not enabled yet."
+                       Classes="secondary"
+                       FontSize="11"
+                       LineHeight="17" />
+        </Border>
+    </StackPanel>
+</UserControl>

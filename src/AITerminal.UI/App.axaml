@@ -1,0 +1,60 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ws="using:AITerminal.UI.ViewModels.Workspaces"
+             xmlns:views="using:AITerminal.UI.Views.Workspaces"
+             x:Class="AITerminal.UI.App"
+             RequestedThemeVariant="Dark">
+
+    <Application.DataTemplates>
+        <DataTemplate DataType="ws:TodayWorkspaceViewModel">
+            <views:TodayWorkspaceView />
+        </DataTemplate>
+        <DataTemplate DataType="ws:TasksWorkspaceViewModel">
+            <views:TasksWorkspaceView />
+        </DataTemplate>
+        <DataTemplate DataType="ws:ScheduleWorkspaceViewModel">
+            <views:ScheduleWorkspaceView />
+        </DataTemplate>
+        <DataTemplate DataType="ws:SettingsWorkspaceViewModel">
+            <views:SettingsWorkspaceView />
+        </DataTemplate>
+    </Application.DataTemplates>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="AppBackgroundBrush" Color="#0B1117" />
+        <SolidColorBrush x:Key="SurfaceBrush" Color="#121B24" />
+        <SolidColorBrush x:Key="SurfaceRaisedBrush" Color="#17222D" />
+        <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#1D2C38" />
+        <SolidColorBrush x:Key="BorderBrush" Color="#273745" />
+        <SolidColorBrush x:Key="BorderStrongBrush" Color="#385063" />
+        <SolidColorBrush x:Key="TextPrimaryBrush" Color="#EFF5F7" />
+        <SolidColorBrush x:Key="TextSecondaryBrush" Color="#B1C0CA" />
+        <SolidColorBrush x:Key="TextMutedBrush" Color="#8799A6" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#5BD6B3" />
+        <SolidColorBrush x:Key="AccentStrongBrush" Color="#7DE8C7" />
+        <SolidColorBrush x:Key="AccentSoftBrush" Color="#173A34" />
+        <SolidColorBrush x:Key="UserBubbleBrush" Color="#17354B" />
+        <SolidColorBrush x:Key="AssistantBubbleBrush" Color="#151F29" />
+        <SolidColorBrush x:Key="WarningBrush" Color="#F3B961" />
+        <SolidColorBrush x:Key="WarningSoftBrush" Color="#3B2B17" />
+        <SolidColorBrush x:Key="DangerBrush" Color="#FF8992" />
+        <SolidColorBrush x:Key="DangerSoftBrush" Color="#3A1B22" />
+        <SolidColorBrush x:Key="TransparentBrush" Color="Transparent" />
+
+        <LinearGradientBrush x:Key="HeroGlowBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Offset="0" Color="#1D4E43" />
+            <GradientStop Offset="0.55" Color="#162D33" />
+            <GradientStop Offset="1" Color="#182131" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="BrandGradientBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Offset="0" Color="#7DE8C7" />
+            <GradientStop Offset="1" Color="#4DB8B0" />
+        </LinearGradientBrush>
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://AITerminal.UI/Styles/AppStyles.axaml" />
+    </Application.Styles>
+</Application>
